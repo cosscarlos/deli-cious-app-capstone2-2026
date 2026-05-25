@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Sandwich implements IOrderable {
 
-    private int size;
+
     private String breadType;
+    private int size;
     private boolean isToasted;
     private List<String> meats;
     private List<String> cheeses;
@@ -70,9 +71,14 @@ public class Sandwich implements IOrderable {
     // generic getters and setters
 
 
-
-
+    public int getSize() {
+        return size;
     }
+
+    public String getBreadType() {
+        return breadType;
+    }
+}
 
 
 
