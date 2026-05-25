@@ -5,46 +5,70 @@ import java.util.List;
 
 public class Sandwich implements IOrderable {
 
-    protected int size;
-    protected String breadType;
-    protected boolean isToasted;
-    protected List<Topping> toppings;
+    private int size;
+    private String breadType;
+    private boolean isToasted;
+    private List<String> meats;
+    private List<String> cheeses;
+    private List<String> toppings;
+    private List <String> sauces;
+    private double price;
 
     public Sandwich(int size, String breadType, boolean isToasted) {
         this.size = size;
         this.breadType = breadType;
         this.isToasted = isToasted;
+        this.meats = new ArrayList<>();
+        this.cheeses = new ArrayList<>();
         this.toppings = new ArrayList<>();
+        this.sauces = new ArrayList<>();
+
+        if (size == 4){
+            price = 5.50;
+        } else if (size ==8){
+            price = 7.00;
+        }else if (size == 12){
+            price = 8.50;
+        }
+
+
+
     }
 
-    public void addTopping(Topping topping){
-        this.toppings.add(topping);
+    public void addMeat (String meat, boolean isExtra){
+        meats.add(meat);
+
+         price += (isExtra) ? .50 : 1.00;
+    }
+
+    public void addCheese (String cheese, boolean isExtra){
+        cheeses.add(cheese);
+
+        price += (isExtra) ? 0.30 : 0.75;
+    }
+
+    public void adTopping(String topping){
+        toppings.add(topping);
+    }
+
+    public void addSauce(String sauce) {
+        sauces.add(sauce);
     }
 
 
     @Override
     public double getPrice(){
-        double price = 0.0;
-
-        switch(size){
-            case 4 -> price = 5.50;
-            case 8 -> price = 7.00;
-            case 12 -> price = 8.50;
-            default -> price = 0.0;
-
+        return  price;
         }
-
-        for (Topping topping : toppings){
-            price += topping.getPrice();
-        }
-
-        return price;
-
-
-    }
     @Override
-    public String getStringDetails(){
-        return size + " " + breadType + " sandwich" + (isToasted ? " (Toasted" : "");
+    public String getStringDetails() {
+        return size + "\" " + breadType + " Sandwich | Toasted: " + isToasted +
+                " | Meats: " + meats + " | Cheeses: " + cheeses +
+                " | Toppings: " + toppings + " | Total: $" + String.format("%.2f", price);
     }
 
-}
+
+    }
+
+
+
