@@ -25,7 +25,7 @@ public class Sandwich implements IOrderable {
 
         if (size == 4){
             price = 5.50;
-        } else if (size ==8){
+        } else if (size == 8){
             price = 7.00;
         }else if (size == 12){
             price = 8.50;
@@ -38,7 +38,7 @@ public class Sandwich implements IOrderable {
     public void addMeat (String meat, boolean isExtra){
         meats.add(meat);
 
-         price += (isExtra) ? .50 : 1.00;
+         price += (isExtra) ? 0.50 : 1.00;
     }
 
     public void addCheese (String cheese, boolean isExtra){
@@ -66,6 +66,10 @@ public class Sandwich implements IOrderable {
                 " | Meats: " + meats + " | Cheeses: " + cheeses +
                 " | Toppings: " + toppings + " | Total: $" + String.format("%.2f", price);
     }
+
+    // generic getters and setters
+
+
 
 
     }

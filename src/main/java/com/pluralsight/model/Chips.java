@@ -16,7 +16,7 @@ public class Chips implements IOrderable {
 
     @Override
     public String getStringDetails(){
-        return name + "Chips -$ " + String.format("%2.f", price);
+        return name + "Chips -$ " + String.format("%.2f", price);
     }
 
 

@@ -13,7 +13,8 @@ public class ReceiptWriter {
 
 
     public static void saveReceipt(Order order){
-        String filename = "src/main/receipts/" + generateTimestamp() + ".txt";
+
+        String filename = "src/main/resources/receipts/" + generateTimestamp() + ".txt";
 
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
             writer.write("--- Receipt ---");
