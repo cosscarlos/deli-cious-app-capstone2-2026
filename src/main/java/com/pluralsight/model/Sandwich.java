@@ -17,6 +17,10 @@ public class Sandwich implements IOrderable {
         this.toppings = new ArrayList<>();
     }
 
+    public void addTopping(Topping topping){
+        this.toppings.add(topping);
+    }
+
 
     @Override
     public double getPrice(){
@@ -40,7 +44,7 @@ public class Sandwich implements IOrderable {
     }
     @Override
     public String getStringDetails(){
-        return size + " " + breadType + " sandwich";
+        return size + " " + breadType + " sandwich" + (isToasted ? " (Toasted" : "");
     }
 
 }
