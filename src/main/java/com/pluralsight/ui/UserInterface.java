@@ -21,7 +21,10 @@ public class UserInterface {
             String option = theScanner.nextLine();
 
             switch (option) {
-                case "1" -> order();
+                case "1" -> {
+                    Order myOrder = new Order();
+                    order(myOrder);
+                }
                 case "0" -> {
                     running = false;
                     System.out.println("Thank you, goodbye!");
@@ -32,7 +35,7 @@ public class UserInterface {
     }
 
 
-    public void order(){
+    public void order(Order order){
 
         System.out.println("==================");
         System.out.println("=     Ordering   =");
@@ -45,7 +48,7 @@ public class UserInterface {
         String option = theScanner.nextLine();
 
         switch (option){
-            case "1" -> addSandwichToOrder();
+            case "1" -> addSandwichToOrder(order);
             case "2" -> addDrink();
             case "3" -> addChips();
             case "4" -> Checkout();
@@ -70,26 +73,29 @@ public class UserInterface {
         System.out.println("What size? (4, 8, or 12");
         int size = Integer.parseInt(theScanner.nextLine());
 
-        System.out.println("Would you like it toasted?");
-        boolean toasted = Boolean.parseBoolean(theScanner.nextLine());
+        System.out.println("Would you like it toasted? (y/n)");
+        boolean toasted = theScanner.nextLine().equalsIgnoreCase("y");
 
         Sandwich sandwich = new Sandwich(size, bread, toasted);
 
         System.out.println("Would you like to add meat? (y/n)");
         String addMeatChoice = theScanner.nextLine();
 
-        if(theScanner.nextLine().equalsIgnoreCase("y")){
-            System.out.println("Available meats: Steak, Hamm Salami, Roast Beef, Chicken, Bacon");
+
+
+        while(addMeatChoice.equalsIgnoreCase("y")){
+            System.out.println("Available meats: Steak, Ham, Salami, Roast Beef, Chicken, Bacon");
             System.out.println("Which meat would you like? ");
             String meat = theScanner.nextLine();
 
-            System.out.println("Would you like extra meat? (y/n): ");
+            System.out.println("Would you like extra meat? (y/n)");
             boolean isExtra = theScanner.nextLine().equalsIgnoreCase("y");
 
             sandwich.addMeat(meat, isExtra);
 
             System.out.println("Meat added! Add another meat? (y/n)");
             addMeatChoice = theScanner.nextLine();
+
         }
 
         order.addSandwich(sandwich);
