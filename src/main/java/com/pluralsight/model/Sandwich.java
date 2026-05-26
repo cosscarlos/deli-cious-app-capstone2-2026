@@ -69,8 +69,6 @@ public class Sandwich implements IOrderable {
     }
 
     // generic getters and setters
-
-
     public int getSize() {
         return size;
     }
