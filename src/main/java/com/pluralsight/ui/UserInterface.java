@@ -98,8 +98,48 @@ public class UserInterface {
 
         }
 
+
+
+        System.out.println("Would you like to add cheese? (y/n)");
+        String addCheeseChoice = theScanner.nextLine();
+
+        while (addCheeseChoice.equalsIgnoreCase("y")){
+            System.out.println("Available cheeses: American, Provolone, Cheddar, Swiss");
+            System.out.println("Which cheese would you like");
+            String cheese = theScanner.nextLine();
+
+            System.out.println("Would you like extra cheese? (y/n)");
+            boolean isExtra = theScanner.nextLine().equalsIgnoreCase("y");
+
+            sandwich.addCheese(cheese, isExtra);
+
+            System.out.println("Cheese added! Add another cheese? (y/n)");
+            addCheeseChoice = theScanner.nextLine();
+        }
+
         order.addSandwich(sandwich);
         System.out.println("Sandwich added to your order!");
+
+
+        System.out.println("Would you like to add toppings? (y/n)?");
+        String addToppingChoice = theScanner.nextLine();
+
+        while (addToppingChoice.equalsIgnoreCase("y")){
+            System.out.println("Available: Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, ");
+            System.out.println("Which topping would you like? ");
+            String topping = theScanner.nextLine();
+
+            sandwich.addTopping((topping));
+
+            System.out.println("Topping added! Add another? (y/n");
+            addToppingChoice = theScanner.nextLine();
+        }
+
+
+
+
+
+
 
     }
     public void addDrink(){

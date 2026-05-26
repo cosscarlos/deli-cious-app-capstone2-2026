@@ -48,7 +48,7 @@ public class Sandwich implements IOrderable {
         price += (isExtra) ? 0.30 : 0.75;
     }
 
-    public void adTopping(String topping){
+    public void addTopping(String topping){
         toppings.add(topping);
     }
 
