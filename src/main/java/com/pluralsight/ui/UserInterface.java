@@ -135,6 +135,20 @@ public class UserInterface {
             addToppingChoice = theScanner.nextLine();
         }
 
+        System.out.println("Would you like to add Sauces? (y/n)?");
+        String addSauceChoice = theScanner.nextLine();
+
+        while(addSauceChoice.equalsIgnoreCase("y")){
+            System.out.println("Sauces available: Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette");
+            System.out.println("Which sauce would you like? ");
+            String sauce = theScanner.nextLine();
+
+            sandwich.addSauce(sauce);
+
+            System.out.println("Sauce added! Add another? (y/n)?");
+            addSauceChoice = theScanner.nextLine();
+        }
+
 
 
 
