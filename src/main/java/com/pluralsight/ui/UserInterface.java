@@ -2,6 +2,7 @@ package com.pluralsight.ui;
 
 
 import com.pluralsight.finance.Order;
+import com.pluralsight.model.Drink;
 import com.pluralsight.model.Sandwich;
 
 import java.util.Scanner;
@@ -49,9 +50,9 @@ public class UserInterface {
 
         switch (option){
             case "1" -> addSandwichToOrder(order);
-            case "2" -> addDrink();
-            case "3" -> addChips();
-            case "4" -> Checkout();
+            case "2" -> addDrinkToOrder(order);
+            case "3" -> addChipsToOrder(order);
+            case "4" -> Checkout(order);
             case "0" -> display();
         }
 
@@ -113,6 +114,8 @@ public class UserInterface {
 
             sandwich.addCheese(cheese, isExtra);
 
+
+
             System.out.println("Cheese added! Add another cheese? (y/n)");
             addCheeseChoice = theScanner.nextLine();
         }
@@ -149,6 +152,13 @@ public class UserInterface {
             addSauceChoice = theScanner.nextLine();
         }
 
+        System.out.println("Would you like to add a side? (au jus / sauce / none)");
+        String sideChoice = theScanner.nextLine().toLowerCase();
+
+        if (!sideChoice.equals("none")){
+            sandwich.addSauce(sideChoice);
+            System.out.println(sideChoice + " added!");
+        }
 
 
 
@@ -156,14 +166,61 @@ public class UserInterface {
 
 
     }
-    public void addDrink(){
-        System.out.println("Add Drink selected!");
+    public void addDrinkToOrder(Order order){
+        String addDrinkChoice = "y";
+
+        while (addDrinkChoice.equalsIgnoreCase("y")){
+            System.out.println("Add Drink selected!");
+
+            System.out.println("Size: Small, Medium, Large");
+            String size = theScanner.nextLine();
+
+            System.out.println("Flavor: Coke, Sprite, Fanta, Water");
+            String flavor = theScanner.nextLine();
+
+            Drink drink = new Drink (size, flavor);
+            order.addDrink(drink);
+            System.out.println("Drink added!");
+
+            System.out.println("Add another drink? (y/n)?");
+            addDrinkChoice = theScanner.nextLine();
+        }
+
+
+
+
     }
-    public void addChips(){
+    public void addChipsToOrder(Order order){
         System.out.println("Add Chips selected!");
+
+        String addChipsChoice = "y";
+
+
+        while (addChipsChoice.equalsIgnoreCase("y")){
+            System.out.println("Add Drink selected!");
+
+            System.out.println("Size: Small, Medium, Large");
+            String size = theScanner.nextLine();
+
+            System.out.println("Flavor: Coke, Sprite, Fanta, Water");
+            String flavor = theScanner.nextLine();
+
+            Drink drink = new Drink (size, flavor);
+            order.addDrink(drink);
+            System.out.println("Drink added!");
+
+            System.out.println("Add another drink? (y/n)?");
+            addChipsChoice = theScanner.nextLine();
+        }
+
     }
-    public void Checkout(){
+    public void Checkout(Order order){
         System.out.println("Checkout selected!");
+
+
+
+
+
     }
 
 
