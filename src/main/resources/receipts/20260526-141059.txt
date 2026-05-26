@@ -1,0 +1,5 @@
+--- Receipt ---
+Small coke Drink
+bbqChips -$ 1.50
+8" Wheat Sandwich | Toasted: true | Meats: [Steak, Chicken] | Cheeses: [American, Swiss] | Toppings: [] | Total: $10.50
+Total: $14.00

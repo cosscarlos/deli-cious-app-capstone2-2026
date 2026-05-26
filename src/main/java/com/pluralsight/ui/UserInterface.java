@@ -2,6 +2,7 @@ package com.pluralsight.ui;
 
 
 import com.pluralsight.finance.Order;
+import com.pluralsight.model.Chips;
 import com.pluralsight.model.Drink;
 import com.pluralsight.model.Sandwich;
 
@@ -12,6 +13,7 @@ public class UserInterface {
 
     public void display() {
         boolean running = true;
+        Order myOrder = new Order();
 
         while (running) {
             System.out.println("Deli-cious app");
@@ -23,7 +25,7 @@ public class UserInterface {
 
             switch (option) {
                 case "1" -> {
-                    Order myOrder = new Order();
+
                     order(myOrder);
                 }
                 case "0" -> {
@@ -197,25 +199,42 @@ public class UserInterface {
 
 
         while (addChipsChoice.equalsIgnoreCase("y")){
-            System.out.println("Add Drink selected!");
+            System.out.println("Add Chips selected!");
 
-            System.out.println("Size: Small, Medium, Large");
-            String size = theScanner.nextLine();
+            System.out.println("Available Chips: Regular, BBQ, Japaleño, Salt & Vinegar");
+            System.out.println("Which chips would you like?");
+            String chipsOption = theScanner.nextLine();
 
-            System.out.println("Flavor: Coke, Sprite, Fanta, Water");
-            String flavor = theScanner.nextLine();
+            Chips chips = new Chips (chipsOption, 1.50);
+            order.addChips(chips);
+            System.out.println("Chips added!");
 
-            Drink drink = new Drink (size, flavor);
-            order.addDrink(drink);
-            System.out.println("Drink added!");
-
-            System.out.println("Add another drink? (y/n)?");
+            System.out.println("Add another bad of chips? (y/n)?");
             addChipsChoice = theScanner.nextLine();
+
         }
 
     }
     public void Checkout(Order order){
         System.out.println("Checkout selected!");
+
+        if (order.getItems().isEmpty()){
+            System.out.println("Your order is empty! Add something before checkout.");
+            return;
+        }
+
+        System.out.println("--- Summary of your order ---");
+        System.out.println(order.getOrderSummary());
+
+        System.out.println("Would you like to confirm and save your order? (y/n)");
+        String confirm = theScanner.nextLine();
+
+        if (confirm.equalsIgnoreCase("y")){
+            com.pluralsight.finance.ReceiptWriter.saveReceipt(order);
+            System.out.println("Thank you for your payment! Your receipt has been generated!");
+        } else {
+            System.out.println("Order canceled.");
+        }
 
 
 

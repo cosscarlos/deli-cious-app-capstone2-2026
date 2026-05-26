@@ -1,0 +1,3 @@
+--- Receipt ---
+4" Wrap Sandwich | Toasted: false | Meats: [Bacon] | Cheeses: [Cheddar] | Toppings: [] | Total: $6.30
+Total: $6.30
