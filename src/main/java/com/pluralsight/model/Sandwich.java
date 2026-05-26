@@ -63,9 +63,17 @@ public class Sandwich implements IOrderable {
         }
     @Override
     public String getStringDetails() {
-        return size + "\" " + breadType + " Sandwich | Toasted: " + isToasted +
-                " | Meats: " + meats + " | Cheeses: " + cheeses +
-                " | Toppings: " + toppings + " | Total: $" + String.format("%.2f", price);
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%d\" %s Sandwich (Toasted: %b)\n", size, breadType, isToasted));
+
+        // Aquí desglosamos los ingredientes
+        if (!meats.isEmpty()) sb.append("  - Meats: ").append(meats).append("\n");
+        if (!cheeses.isEmpty()) sb.append("  - Cheeses: ").append(cheeses).append("\n");
+        if (!toppings.isEmpty()) sb.append("  - Toppings: ").append(toppings).append("\n");
+        if (!sauces.isEmpty()) sb.append("  - Sides/Sauces: ").append(sauces).append("\n");
+
+        sb.append(String.format("  -> Subtotal: $%.2f", price));
+        return sb.toString();
     }
 
     // generic getters and setters
