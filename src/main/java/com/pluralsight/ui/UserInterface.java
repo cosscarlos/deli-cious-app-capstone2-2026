@@ -39,6 +39,8 @@ public class UserInterface {
 
 
     public void order(Order order){
+        boolean ordering = true;
+        while (ordering){
 
         System.out.println("==================");
         System.out.println("=     Ordering   =");
@@ -50,12 +52,17 @@ public class UserInterface {
         System.out.println("4) Checkout");
         String option = theScanner.nextLine();
 
-        switch (option){
+        switch (option) {
             case "1" -> addSandwichToOrder(order);
             case "2" -> addDrinkToOrder(order);
             case "3" -> addChipsToOrder(order);
-            case "4" -> Checkout(order);
-            case "0" -> display();
+            case "4" -> {
+                Checkout(order);
+                ordering = false;
+            }
+
+            case "0" -> ordering = false;
+        }
         }
 
 
@@ -83,6 +90,8 @@ public class UserInterface {
 
         System.out.println("Would you like to add meat? (y/n)");
         String addMeatChoice = theScanner.nextLine();
+
+
 
 
 

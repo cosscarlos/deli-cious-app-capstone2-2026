@@ -9,8 +9,8 @@ public class Sandwich implements IOrderable {
     private String breadType;
     private int size;
     private boolean isToasted;
-    private List<String> meats;
-    private List<String> cheeses;
+    private List<Ingredient> meats;
+    private List<Ingredient> cheeses;
     private List<String> toppings;
     private List <String> sauces;
     private double price;
@@ -37,15 +37,28 @@ public class Sandwich implements IOrderable {
     }
 
     public void addMeat (String meat, boolean isExtra){
-        meats.add(meat);
+        double basePrice = (size == 4) ? 1.00 : (size == 8) ? 2.00 : 3.00;
+        double extraPrice = (size == 4) ? 0.50 : (size == 8) ? 1.00 : 1.50;
+        double cost = isExtra ? extraPrice : basePrice;
 
-         price += (isExtra) ? 0.50 : 1.00;
+        meats.add(new Ingredient(meat, basePrice));
+        this.price += basePrice;
+
+        meats.add(new Ingredient(meat + " (Extra)", extraPrice));
+        this.price += extraPrice;
     }
 
     public void addCheese (String cheese, boolean isExtra){
-        cheeses.add(cheese);
+        double basePrice = (size == 4) ? 0.75 : (size == 8) ? 1.50 : 2.25;
+        double extraPrice = (size == 4) ? 0.30 : (size == 8) ? 0.60 : 0.90;
 
-        price += (isExtra) ? 0.30 : 0.75;
+        cheeses.add(new Ingredient(cheese, basePrice));
+        this.price += basePrice;
+
+        if (isExtra) {
+            cheeses.add(new Ingredient(cheese + " (Extra)", extraPrice));
+            this.price += extraPrice;
+        }
     }
 
     public void addTopping(String topping){
@@ -63,17 +76,38 @@ public class Sandwich implements IOrderable {
         }
     @Override
     public String getStringDetails() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%d\" %s Sandwich (Toasted: %b)\n", size, breadType, isToasted));
 
-        // Aquí desglosamos los ingredientes
-        if (!meats.isEmpty()) sb.append("  - Meats: ").append(meats).append("\n");
-        if (!cheeses.isEmpty()) sb.append("  - Cheeses: ").append(cheeses).append("\n");
-        if (!toppings.isEmpty()) sb.append("  - Toppings: ").append(toppings).append("\n");
-        if (!sauces.isEmpty()) sb.append("  - Sides/Sauces: ").append(sauces).append("\n");
+        StringBuilder summaryOrder = new StringBuilder();
 
-        sb.append(String.format("  -> Subtotal: $%.2f", price));
-        return sb.toString();
+        double baseSandwichPrice = (size == 4) ? 5.50 : (size == 8) ? 7.00 : 8.50;
+        summaryOrder.append(String.format("%d\" %s Sandwich (Toasted: %b) - $%.2f\n", size, breadType, isToasted, baseSandwichPrice));
+
+        for (Ingredient m : meats){
+            summaryOrder.append(String.format("  - Meat: %s  $%.2f\n", m.name, m.price));
+        }
+
+        for (Ingredient c : cheeses) {
+            summaryOrder.append(String.format("  - Cheese: %s  $%.2f\n", c.name, c.price));
+        }
+
+        if (!toppings.isEmpty()) summaryOrder.append("  - Toppings: ").append(toppings).append("\n");
+        if (!sauces.isEmpty()) summaryOrder.append("  - Sides/Sauces: ").append(sauces).append("\n");
+
+        summaryOrder.append(String.format("  -> Subtotal: $%.2f", price));
+        return summaryOrder.toString();
+
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(String.format("%d\" %s Sandwich (Toasted: %b)\n", size, breadType, isToasted));
+//
+//        for (Ingredient m : meats) {
+//            sb.append(String.format("  - Meats: [%s]  $%.2f\n", m.name, m.price));
+//        }
+//        for (Ingredient c : cheeses) {
+//            sb.append(String.format("  - Cheeses: [%s]  $%.2f\n", c.name, c.price));
+//        }
+//
+//        sb.append(String.format("  -> Subtotal: $%.2f", price));
+//        return sb.toString();
     }
 
     // generic getters and setters

@@ -23,7 +23,7 @@ public class Drink implements IOrderable {
 
     @Override
     public String getStringDetails(){
-        return size + " " + flavor + " Drink";
+        return size + " " + flavor + " Drink - $" + String.format("%.2f", getPrice());
     }
 
 
