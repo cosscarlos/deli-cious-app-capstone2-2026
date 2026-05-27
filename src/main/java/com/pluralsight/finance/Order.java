@@ -53,6 +53,10 @@ public class Order {
 
     }
 
+    public void clearOrder() {
+        this.items.clear();
+    }
+
 
 
 

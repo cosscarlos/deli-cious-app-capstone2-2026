@@ -80,19 +80,39 @@ public class UserInterface {
         System.out.println("What kind of bread do you prefer? (White, Wheat, Rye, Wrap)");
         String bread = theScanner.nextLine();
 
-        System.out.println("What size? (4, 8, or 12");
+        while (!bread.equalsIgnoreCase("White") && !bread.equalsIgnoreCase("Wheat") && !bread.equalsIgnoreCase("Rye") && !bread.equalsIgnoreCase("Wrap")) {
+            System.out.println("Invalid input. Please, select between: White, Wheat, Rye, Wrap");
+            bread = theScanner.nextLine().trim();
+        }
+
+        System.out.println("What size? (4\", 8\", or 12\")");
         int size = Integer.parseInt(theScanner.nextLine());
 
-        System.out.println("Would you like it toasted? (y/n)");
-        boolean toasted = theScanner.nextLine().equalsIgnoreCase("y");
+        while (size != 4 && size != 8 && size != 12) {
+            System.out.println("Error, input not valid. Please select between 4, 8, or 12");
+            size = Integer.parseInt(theScanner.nextLine());
+        }
 
-        Sandwich sandwich = new Sandwich(size, bread, toasted);
+
+        System.out.println("Would you like it toasted? (y/n)");
+        String isToasted = theScanner.nextLine();
+
+
+
+        while (!isToasted.equalsIgnoreCase("y") && !isToasted.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+            isToasted = theScanner.nextLine().trim();
+        }
+
+        Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
         System.out.println("Would you like to add meat? (y/n)");
         String addMeatChoice = theScanner.nextLine();
 
-
-
+        while (!addMeatChoice.equalsIgnoreCase("y") && !addMeatChoice.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+            addMeatChoice = theScanner.nextLine().trim();
+        }
 
 
         while(addMeatChoice.equalsIgnoreCase("y")){
@@ -100,20 +120,40 @@ public class UserInterface {
             System.out.println("Which meat would you like? ");
             String meat = theScanner.nextLine();
 
+            while (!meat.equalsIgnoreCase("Steak") && !meat.equalsIgnoreCase("Ham")
+                    && !meat.equalsIgnoreCase("Salami") && !meat.equalsIgnoreCase("Roast Beef")
+                    && !meat.equalsIgnoreCase("Chicken") && !meat.equalsIgnoreCase("Bacon")) {
+                System.out.println("Invalid input. Please enter the available meats: Steak, Ham, Salami, Roast Beef, Chicken, Bacon");
+                meat = theScanner.nextLine().trim();
+            }
+
+
+
             System.out.println("Would you like extra meat? (y/n)");
             boolean isExtra = theScanner.nextLine().equalsIgnoreCase("y");
+
+
 
             sandwich.addMeat(meat, isExtra);
 
             System.out.println("Meat added! Add another meat? (y/n)");
             addMeatChoice = theScanner.nextLine();
 
+
+            while (!addMeatChoice.equalsIgnoreCase("y") && !addMeatChoice.equalsIgnoreCase("n")) {
+                System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+                addMeatChoice = theScanner.nextLine().trim();
+            }
+
         }
-
-
 
         System.out.println("Would you like to add cheese? (y/n)");
         String addCheeseChoice = theScanner.nextLine();
+
+        while (!addCheeseChoice.equalsIgnoreCase("y") && !addCheeseChoice.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+            addCheeseChoice = theScanner.nextLine().trim();
+        }
 
         while (addCheeseChoice.equalsIgnoreCase("y")){
             System.out.println("Available cheeses: American, Provolone, Cheddar, Swiss");
@@ -138,8 +178,17 @@ public class UserInterface {
         System.out.println("Would you like to add toppings? (y/n)?");
         String addToppingChoice = theScanner.nextLine();
 
+        while (!addToppingChoice.equalsIgnoreCase("y") && !addToppingChoice.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+            addToppingChoice = theScanner.nextLine().trim();
+        }
+
+
+
+
         while (addToppingChoice.equalsIgnoreCase("y")){
-            System.out.println("Available: Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, ");
+            System.out.println("Available: Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers," +
+                    "pickles, guacamole or mushrooms");
             System.out.println("Which topping would you like? ");
             String topping = theScanner.nextLine();
 
@@ -151,6 +200,11 @@ public class UserInterface {
 
         System.out.println("Would you like to add Sauces? (y/n)?");
         String addSauceChoice = theScanner.nextLine();
+
+        while (!addSauceChoice.equalsIgnoreCase("y") && !addSauceChoice.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+            addSauceChoice = theScanner.nextLine().trim();
+        }
 
         while(addSauceChoice.equalsIgnoreCase("y")){
             System.out.println("Sauces available: Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette");
@@ -165,6 +219,12 @@ public class UserInterface {
 
         System.out.println("Would you like to add a side? (au jus / sauce / none)");
         String sideChoice = theScanner.nextLine().toLowerCase();
+
+        while (!sideChoice.equalsIgnoreCase("au jus") && !sideChoice.equalsIgnoreCase("sauce")
+        && !sideChoice.equalsIgnoreCase("none")){
+            System.out.println("Invalid input. Please enter 'y' to confirm or 'n' for no.");
+            sideChoice = theScanner.nextLine().trim();
+        }
 
         if (!sideChoice.equals("none")){
             sandwich.addSauce(sideChoice);
@@ -183,11 +243,22 @@ public class UserInterface {
         while (addDrinkChoice.equalsIgnoreCase("y")){
             System.out.println("Add Drink selected!");
 
+
             System.out.println("Size: Small, Medium, Large");
             String size = theScanner.nextLine();
 
+            while (!size.equalsIgnoreCase("Small") && !size.equalsIgnoreCase("Medium") && !size.equalsIgnoreCase("Large")) {
+                System.out.println("Not valid input, please select between: Small, Medium o Large:");
+                size = theScanner.nextLine().trim();
+            }
+
             System.out.println("Flavor: Coke, Sprite, Fanta, Water");
             String flavor = theScanner.nextLine();
+
+            while (!flavor.equalsIgnoreCase("Coke") && !flavor.equalsIgnoreCase("Sprite") && !flavor.equalsIgnoreCase("Fanta") && !flavor.equalsIgnoreCase("Water")) {
+                System.out.println("Invalid input. Please, select between: Coke, Sprite, Fanta, Water");
+                flavor = theScanner.nextLine().trim();
+            }
 
             Drink drink = new Drink (size, flavor);
             order.addDrink(drink);
@@ -241,8 +312,10 @@ public class UserInterface {
         if (confirm.equalsIgnoreCase("y")){
             com.pluralsight.finance.ReceiptWriter.saveReceipt(order);
             System.out.println("Thank you for your payment! Your receipt has been generated!");
+            order.clearOrder();
         } else {
             System.out.println("Order canceled.");
+            order.clearOrder();
         }
 
 

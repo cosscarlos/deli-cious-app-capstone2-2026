@@ -8,14 +8,14 @@ public class Sandwich implements IOrderable {
 
     private String breadType;
     private int size;
-    private boolean isToasted;
+    private String isToasted;
     private List<Ingredient> meats;
     private List<Ingredient> cheeses;
     private List<String> toppings;
     private List <String> sauces;
     private double price;
 
-    public Sandwich(int size, String breadType, boolean isToasted) {
+    public Sandwich(int size, String breadType, String isToasted) {
         this.size = size;
         this.breadType = breadType;
         this.isToasted = isToasted;
