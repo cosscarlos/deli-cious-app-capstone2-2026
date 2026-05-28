@@ -8,14 +8,14 @@ public class Sandwich implements IOrderable {
 
     private String breadType;
     private int size;
-    private String isToasted;
+    private boolean isToasted;
     private List<Ingredient> meats;
     private List<Ingredient> cheeses;
     private List<String> toppings;
     private List <String> sauces;
     private double price;
 
-    public Sandwich(int size, String breadType, String isToasted) {
+    public Sandwich(int size, String breadType, boolean isToasted) {
         this.size = size;
         this.breadType = breadType;
         this.isToasted = isToasted;
@@ -110,14 +110,8 @@ public class Sandwich implements IOrderable {
 //        return sb.toString();
     }
 
-    // generic getters and setters
-    public int getSize() {
-        return size;
-    }
 
-    public String getBreadType() {
-        return breadType;
-    }
+
 }
 
 

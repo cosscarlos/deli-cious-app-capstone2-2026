@@ -95,14 +95,15 @@ public class UserInterface {
 
 
         System.out.println("Would you like it toasted? (y/n)");
-        String isToasted = theScanner.nextLine();
+        String isToastedInput = theScanner.nextLine().trim();
 
-
-
-        while (!isToasted.equalsIgnoreCase("y") && !isToasted.equalsIgnoreCase("n")) {
+        while (!isToastedInput.equalsIgnoreCase("y") && !isToastedInput.equalsIgnoreCase("n")) {
             System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
-            isToasted = theScanner.nextLine().trim();
+            isToastedInput = theScanner.nextLine().trim();
         }
+
+
+        boolean isToasted = isToastedInput.equalsIgnoreCase("y");
 
         Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
@@ -293,7 +294,6 @@ public class UserInterface {
             addChipsChoice = theScanner.nextLine();
 
         }
-
     }
     public void Checkout(Order order){
         System.out.println("Checkout selected!");
@@ -317,16 +317,5 @@ public class UserInterface {
             System.out.println("Order canceled.");
             order.clearOrder();
         }
-
-
-
-
-
     }
-
-
-
-
 }
-
-
