@@ -1,0 +1,10 @@
+--- Receipt ---
+8" White Sandwich (Toasted: true) - $7.00
+  - Meat: Steak  $2.00
+  - Meat: Steak (Extra)  $1.00
+  - Cheese: American  $1.50
+  - Cheese: American (Extra)  $0.60
+  - Toppings: [Lettuce, Peppers]
+  - Sides/Sauces: [Mayo]
+  -> Subtotal: $12.10
+Total: $12.10

@@ -1,0 +1,5 @@
+--- Receipt ---
+8" wrap Sandwich (Toasted: true)
+  - Meats: [steak (Extra)]
+  -> Subtotal: $7.50
+Total: $7.50

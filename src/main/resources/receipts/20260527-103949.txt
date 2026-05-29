@@ -1,0 +1,12 @@
+--- Receipt ---
+Medium Water Drink - $2.50
+regularChips -$ 1.50
+8" white Sandwich (Toasted: true) - $7.00
+  - Meat: steak  $2.00
+  - Meat: steak (Extra)  $1.00
+  - Cheese: Swiss  $1.50
+  - Cheese: Swiss (Extra)  $0.60
+  - Toppings: [Lettuce]
+  - Sides/Sauces: [Ketchup]
+  -> Subtotal: $12.10
+Total: $16.10

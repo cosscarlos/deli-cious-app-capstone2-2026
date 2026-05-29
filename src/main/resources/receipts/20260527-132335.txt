@@ -1,0 +1,25 @@
+--- Receipt ---
+4" White Sandwich (Toasted: true) - $5.50
+  - Meat: Steak  $1.00
+  - Meat: Steak (Extra)  $0.50
+  - Cheese: American  $0.75
+  - Cheese: American (Extra)  $0.30
+  - Toppings: [Jalapenos]
+  - Sides/Sauces: [ranch]
+  -> Subtotal: $8.05
+8" Wrap Sandwich (Toasted: true) - $7.00
+  - Meat: Ham  $2.00
+  - Meat: Ham (Extra)  $1.00
+  - Meat: Chicken  $2.00
+  - Meat: Chicken (Extra)  $1.00
+  - Cheese: Swiss  $1.50
+  - Cheese: Swiss (Extra)  $0.60
+  - Cheese: American  $1.50
+  - Toppings: [Cucumbers, Onions, Lettuce]
+  - Sides/Sauces: [Mayo, Ketchup, Vinaigrette, sauce]
+  -> Subtotal: $16.60
+Small water Drink - $2.00
+small sprite Drink - $2.00
+regularChips -$ 1.50
+bbChips -$ 1.50
+Total: $31.65
