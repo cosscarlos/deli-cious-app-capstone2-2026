@@ -44,8 +44,10 @@ public class Sandwich implements IOrderable {
         meats.add(new Ingredient(meat, basePrice));
         this.price += basePrice;
 
-        meats.add(new Ingredient(meat + " (Extra)", extraPrice));
-        this.price += extraPrice;
+        if (isExtra) {
+            meats.add(new Ingredient(meat + " (Extra)", extraPrice));
+            this.price += extraPrice;
+        }
     }
 
     public void addCheese (String cheese, boolean isExtra){
